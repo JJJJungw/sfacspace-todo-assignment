@@ -4,7 +4,7 @@
 # from sqlalchemy import create_engine, MetaData, Table, select => core 방식에서는 선언시 직접적인 객체를 사용한다(meta data 등등..)
 
 #현재 orm방식은 일반적으로 declarativeBase상위 클래스를 상속받아 클래스를 생성하는것이다. (공식문서 2.0.48 기준)
-from sqlalchmy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from datetime import datetime
 from typing import Optional
 from sqlalchemy import String, DateTime, Integer, Boolean, func
