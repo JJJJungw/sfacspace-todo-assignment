@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16-alpine # 용량을 줄여보자
+    container_name: todo_db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: todo_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "5050:80"
+    depends_on:
+      - db # db 서비스가 먼저 시작되어야 pgAdmin이 데이터베이스에 연결할 수 있습니다.
+
+  api:
+    build: .
+    container_name: todo_api
+    ports:
+      - "8000:8000"
+    command: uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
+    env_file:
+      - .env
+    depends_on:
+      - db # api 서비스가 db 서비스에 의존하므로, db가 먼저 시작되어야 합니다.
+
+volumes:
+  postgres_data:
