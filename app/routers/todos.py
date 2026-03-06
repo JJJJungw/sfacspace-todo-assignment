@@ -90,6 +90,5 @@ def delete_todo(todo_id: int, db: Session = Depends(get_db)):
     # [2단계] 삭제 처리
     db.delete(db_todo)
     db.commit()
-    # 204 No Content이므로 아무것도 반환하지 않습니다.
     return None
 

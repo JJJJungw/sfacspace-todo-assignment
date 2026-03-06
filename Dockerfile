@@ -17,5 +17,5 @@ COPY . .
 # 4. PATH 설정 (uv sync는 기본적으로 /app/.venv를 만듭니다)
 ENV PATH="/app/.venv/bin:$PATH"
 
-# 5. 실행 명령 (uv run을 사용하면 가상환경 내의 패키지를 더 안전하게 실행합니다)
+# 5. 실행 명령
 CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
