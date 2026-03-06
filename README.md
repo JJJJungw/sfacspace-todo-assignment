@@ -1,19 +1,19 @@
-# 🐳 FastAPI Async Todo REST API
+#  FastAPI  Todo REST API
 
-본 프로젝트는 **FastAPI**와 **PostgreSQL**을 기반으로 한 비동기 할 일 관리(Todo) 서버입니다. Docker 컨테이너 환경에서 인프라를 구축하고, SQLAlchemy 2.0의 비동기 기능을 활용하여 효율적인 데이터 처리를 구현했습니다.
+본 과제는 FastAPI와 PostgreSQL을 기반으로 한 할 일 관리(Todo) 서버입니다. Docker 컨테이너 환경에서 인프라를 구축하고, SQLAlchemy를 활용하여 데이터 처리를 구현했습니다.
 
 ---
 
 ## 🛠 Tech Stack
-- **Framework**: FastAPI (Python 3.11)
-- **Database**: PostgreSQL 15
-- **ORM**: SQLAlchemy 2.0 (Async Mode)
-- **Driver**: asyncpg
-- **Infrastructure**: Docker, Docker Compose
+- Framework: FastAPI (Python 3.11)
+- Database: PostgreSQL 15
+- ORM: SQLAlchemy
+- Driver: asyncpg
+- Infrastructure: Docker, Docker Compose
 
 ---
 
-## 🏗 프로젝트 구조
+##  프로젝트 구조
 ```text
 todo-api/
 ├── app/
@@ -28,7 +28,7 @@ todo-api/
 ├── .env                # 환경 변수 (DB 접속 정보 등)
 └── README.md           # 프로젝트 문서
 ```
-## 🚀 실행 방법
+## 실행 방법
 
 ### 1. 환경 변수 설정
 프로젝트 루트에 `.env` 파일을 생성하고 아래 내용을 입력합니다.
