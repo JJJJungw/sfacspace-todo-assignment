@@ -5,8 +5,10 @@ from typing import List
 
 from ..database import SessionLocal
 from .. import models, schemas
+
 router = APIRouter(prefix="/todos", tags=["todos"])
 
+#db세션 관리용 - ex) @trainsactional 같은 역할
 def get_db():
     db = SessionLocal()
     try:

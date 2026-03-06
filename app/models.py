@@ -19,6 +19,3 @@ class Todo(Base):
     description: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     is_done: Mapped[bool] = mapped_column(Boolean, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
-
-    
-
