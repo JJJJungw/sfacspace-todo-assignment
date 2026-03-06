@@ -39,7 +39,20 @@ POSTGRES_USER=user
 POSTGRES_PASSWORD=password
 POSTGRES_DB=todo_db
 ```
+### 2. 컨테이너 빌드 및 실행
+터미널에서 아래 명령어를 입력하여 서비스를 빌드하고 백그라운드에서 실행합니다.
 
+```bash
+docker-compose up --build -d
+```
+
+### 3.API 확인
+컨테이너가 정상적으로 실행되면 브라우저를 통해 아래 주소에서 API를 확인하고 테스트할 수 있습니다.
+```link
+Swagger UI (자동 문서화): http://localhost:8000/docs
+
+Health Check (상태 확인): http://localhost:8000/health
+```
 todo-Rest Api 서버 구축 과제
 기간 3월 9일
 스택 : python 3.11 / FastAPI / PostgreSQL / Docker / Dokcer Compose
