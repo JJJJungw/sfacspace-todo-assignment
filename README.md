@@ -28,6 +28,17 @@ todo-api/
 ├── .env                # 환경 변수 (DB 접속 정보 등)
 └── README.md           # 프로젝트 문서
 ```
+## 🚀 실행 방법
+
+### 1. 환경 변수 설정
+프로젝트 루트에 `.env` 파일을 생성하고 아래 내용을 입력합니다.
+
+```env
+DATABASE_URL=postgresql+asyncpg://user:password@db:5432/todo_db
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_DB=todo_db
+```
 
 todo-Rest Api 서버 구축 과제
 기간 3월 9일
