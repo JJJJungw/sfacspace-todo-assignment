@@ -53,11 +53,6 @@ Swagger UI (자동 문서화): http://localhost:8000/docs
 
 Health Check (상태 확인): http://localhost:8000/health
 ```
-todo-Rest Api 서버 구축 과제
-기간 3월 9일
-스택 : python 3.11 / FastAPI / PostgreSQL / Docker / Dokcer Compose
-목표 : Dokcer와 python을 이용해 실제로 동작하는 REST API 서버 구축
-포트 / ip / 웹 서버 / 컨테이너 네트워크 개념을 손으로 경험 하는것이 핵심
 
 생각해볼것 api 컨테이너 DB에 접속할 때 host를 localhost로 하면 왜 안될까요?
 docker 환경에서 localhost는 자기자신(컨테이너)를 의미합니다
