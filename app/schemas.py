@@ -3,21 +3,22 @@ from typing import Optional
 from datetime import datetime
 
 class TodoBase(BaseModel):
-    # 필수 필드 (Request 시 반드시 포함되어야 함)
-    title: str = Field(..., min_length=1, max_length=255, description="제목")
-    # 선택 필드 (Request 시 없어도 에러 안 남)
-    description: Optional[str] = Field(None, max_length=500, description="상세 설명")
-    is_done: bool = Field(default=False, description="완료 여부")
+    title: str = Field(..., min_length=1, max_length=255)
+    description: str | None = Field(None, max_length=500) # Optional 대신 | None 사용
+    is_done: bool = False
 
 class TodoCreate(TodoBase):
     pass
 
 class TodoResponse(TodoBase):
-    id: int = Field(..., description="할 일 ID")
-    created_at: datetime = Field(..., description="생성 시간")
-    model_config = ConfigDict(from_attributes=True)
+    id: int
+    created_at: datetime
+    
+    # [핵심] SQLAlchemy 객체(ORM)를 Pydantic으로 자동 변환해주는 설정
+    model_config = ConfigDict(from_attributes=True) 
 
 class TodoUpdate(BaseModel):
-    title: Optional[str] = Field(None, min_length=1, max_length=255, description="제목")
-    description: Optional[str] = Field(None, max_length=500, description="상세 설명")
-    is_done: Optional[bool] = Field(None, description="완료 여부")
+    # 업데이트는 모든 필드가 선택적(Optional)이어야 함
+    title: str | None = None
+    description: str | None = None
+    is_done: bool | None = None

@@ -4,18 +4,21 @@
 # from sqlalchemy import create_engine, MetaData, Table, select => core 방식에서는 선언시 직접적인 객체를 사용한다(meta data 등등..)
 
 #현재 orm방식은 일반적으로 declarativeBase상위 클래스를 상속받아 클래스를 생성하는것이다. (공식문서 2.0.48 기준)
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from datetime import datetime
-from typing import Optional
-from sqlalchemy import String, DateTime, Integer, Boolean, func
+from sqlalchemy import String, func
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 class Base(DeclarativeBase):
     pass
-#현재는 Mapped를 사용해서 테이블을 만들고 있는 추세
+
 class Todo(Base):
     __tablename__ = "todos"
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
-    title: Mapped[str] = mapped_column(String(255), nullable=False)
-    description: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
-    is_done: Mapped[bool] = mapped_column(Boolean, default=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    # Python 3.10+ 스타일: Optional 대신 T | None 사용 가능 (SQLAlchemy 매핑에서도 인식됨)
+    id: Mapped[int] = mapped_column(primary_key=True) # Integer 생략 가능 (Mapped[int]로 추론)
+    title: Mapped[str] = mapped_column(String(255))  # nullable=False는 기본값 (Mapped[str] 기준)
+    description: Mapped[str | None] = mapped_column(String(500)) # Optional[str] 대신 str | None
+    is_done: Mapped[bool] = mapped_column(default=False)
+    
+    # server_default는 DB 레벨의 기본값, default는 Python 레벨의 기본값
+    created_at: Mapped[datetime] = mapped_column(server_default=func.now())
