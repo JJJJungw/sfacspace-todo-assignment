@@ -4,7 +4,7 @@
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 - Framework: FastAPI (Python 3.11)
 - Database: PostgreSQL 15
 - ORM: SQLAlchemy
