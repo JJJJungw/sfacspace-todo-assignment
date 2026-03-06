@@ -17,15 +17,15 @@
 ```text
 todo-api/
 ├── app/
-│   ├── main.py         # FastAPI 앱 진입점 및 Lifespan(DB 초기화) 설정
+│   ├── main.py         # FastAPI 앱 진입점 및 DB 초기화 설정
 │   ├── models.py       # SQLAlchemy ORM 모델 정의
-│   ├── schemas.py      # Pydantic DTO (입출력 검증)
+│   ├── schemas.py      # Pydantic DTO
 │   ├── database.py     # 비동기 DB 엔진 및 세션 설정
 │   └── routers/
-│       └── todos.py    # Todo CRUD 비동기 라우터
+│       └── todos.py    # Todo CRUD 라우터
 ├── Dockerfile          # API 서버 이미지 빌드 설정
 ├── docker-compose.yml  # API, DB, pgAdmin 컨테이너 오케스트레이션
-├── .env                # 환경 변수 (DB 접속 정보 등)
+├── .env                # 환경 변수
 └── README.md           # 프로젝트 문서
 ```
 ## 실행 방법
