@@ -40,7 +40,6 @@ def read_todos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     # 4. 반환 (DTO 변환)
     return todos
 
-from fastapi import HTTPException, status
 
 # 3. 할 일 단건 상세 조회 (GET /todos/{todo_id})
 @router.get("/{todo_id}", response_model=schemas.TodoResponse)
@@ -92,5 +91,3 @@ def delete_todo(todo_id: int, db: Session = Depends(get_db)):
     # [2단계] 삭제 처리
     db.delete(db_todo)
     db.commit()
-    return None
-

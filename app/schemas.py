@@ -1,5 +1,4 @@
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Optional
 from datetime import datetime
 
 class TodoBase(BaseModel):
@@ -14,7 +13,7 @@ class TodoResponse(TodoBase):
     id: int
     created_at: datetime
     
-    # [핵심] SQLAlchemy 객체(ORM)를 Pydantic으로 자동 변환해주는 설정
+    # [핵심] FastAPI에서 SQLAlchemy ORM 객체를 Pydantic 모델로 변환할 때 필요한 설정
     model_config = ConfigDict(from_attributes=True) 
 
 class TodoUpdate(BaseModel):
