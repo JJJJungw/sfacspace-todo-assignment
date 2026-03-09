@@ -6,10 +6,8 @@
 #현재 orm방식은 일반적으로 declarativeBase상위 클래스를 상속받아 클래스를 생성하는것이다. (공식문서 2.0.48 기준)
 from datetime import datetime
 from sqlalchemy import String, func
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-
-class Base(DeclarativeBase):
-    pass
+from sqlalchemy.orm import Mapped, mapped_column
+from .database import Base
 
 class Todo(Base):
     __tablename__ = "todos"
